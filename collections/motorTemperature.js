@@ -16,3 +16,15 @@ Meteor.methods({
   }
 
 });
+
+if(Meteor.isClient){
+
+  Session.set("actualMotorTemp",MotorTemperatures.find({}, {sort: {timestamp: -1}, limit:1}).fetch()[0])
+
+  MotorTemperatures.find().observe({
+    added: function(temp){
+      Session.set("actualMotorTemp",temp);
+    }
+  });
+
+}
