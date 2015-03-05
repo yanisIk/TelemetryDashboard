@@ -8,22 +8,29 @@ MotorTemperatures.allow({
 Meteor.methods({
 
   motorTemperatureInsert: function(temp) {
-      check(temp,{
-        value: Number
-      });
-      temp.timestamp = new Date();
-      MotorTemperatures.insert(temp)
+      check(temp,Match.Integer);
+
+      var tempObject = {
+        value: temp,
+        timestamp: Date.now()
+      };
+      MotorTemperatures.insert(tempObject);
   }
 
 });
 
 if(Meteor.isClient){
 
-  Session.set("actualMotorTemp",MotorTemperatures.find({}, {sort: {timestamp: -1}, limit:1}).fetch()[0])
+  Session.set("actualMotorTemp",MotorTemperatures.find({}, {sort: {timestamp: -1}, limit:1}).fetch()[0]);
+  motorTemps = [];
+  Session.set("motorTemps", motorTemps);
 
   MotorTemperatures.find().observe({
     added: function(temp){
       Session.set("actualMotorTemp",temp);
+      var localMotorTemps = Session.get("motorTemps");
+      localMotorTemps.push({x:temp.timestamp, y:temp.value});
+      Session.set("motorTemps", localMotorTemps);
     }
   });
 

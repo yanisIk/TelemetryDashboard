@@ -21,7 +21,7 @@ Template.tempGauge.rendered = function () {
     chart.yAxis.axisLabel('Temperature').tickFormat(d3.format('d'));
 
     d3.select('#tempGauge svg').datum(
-      [{ values: MotorTemperatures.find().fetch(), key: 'timestamp' }]
+      [{ values: MotorTemperatures.find().fetch(), key: 'Motor temperature' }]
     ).transition().duration(300).call(chart);
 
     nv.utils.windowResize(function() { chart.update(); });
@@ -31,7 +31,7 @@ Template.tempGauge.rendered = function () {
 
   this.autorun(function () {
     d3.select('#tempGauge svg').datum(
-      [{ values: MotorTemperatures.find().fetch(), key: 'timestamp' }]
+      [{ values: MotorTemperatures.find().fetch(), key: 'Motor temperature' }]
     ).transition().duration(300).call(chart);
 
     chart.update();

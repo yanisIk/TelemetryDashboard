@@ -2,6 +2,18 @@ Template.tempChart.helpers({
   actualTemp: function(){return Session.get("actualMotorTemp");}
 });
 
+Template.tempChart.events({
+  'click #pushTemp': function(event, template){
+    var temp = parseInt($('input[name=temperature]:text').val());
+    Meteor.call('motorTemperatureInsert', temp);
+    console.log("new temp = "+temp);
+  },
+  'click #pushRandomTemp': function(event, template){
+    var temp = _.random(0,100);
+    Meteor.call('motorTemperatureInsert', temp);
+    console.log("new temp = "+temp);
+  }
+});
 
 
 //Chart
@@ -21,7 +33,7 @@ Template.tempChart.rendered = function () {
     chart.yAxis.axisLabel('Temperature (F)').tickFormat(d3.format('d'));
 
     d3.select('#tempChart svg').datum(
-      [{ values: MotorTemperatures.find().fetch(), key: 'timestamp' }]
+      [{ values: Session.get('motorTemps'), key: 'Motor temperature' }]
     ).transition().duration(300).call(chart);
 
     nv.utils.windowResize(function() { chart.update(); });
@@ -32,7 +44,7 @@ Template.tempChart.rendered = function () {
 
   this.autorun(function () {
     d3.select('#tempChart svg').datum(
-      [{ values: MotorTemperatures.find().fetch(), key: 'timestamp' }]
+      [{ values: Session.get('motorTemps'), key: 'Motor temperature' }]
     ).transition().duration(300).call(chart);
 
     chart.update();
