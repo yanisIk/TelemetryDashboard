@@ -1,5 +1,20 @@
 <template name="dashboard">
-  {{> tempChart}}
 
-  {{> tempGauge}}
+
+  <div class="panel panel-primary" onTablet="span6" onDesktop="span3">
+    <div class="panel-heading">Motor Temperature Chart</div>
+    <div class="panel-body">
+    <!--  {{> motorTempStatBox}} -->
+      {{> tempChart}}
+      {{> tempGauge}}
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">Motor Temperature Table</div>
+    <div class="panel-body">
+      {{> tempTable}}
+    </div>
+  </div>
+
 </template>

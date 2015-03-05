@@ -41,6 +41,7 @@ meteor-platform@1.2.1-winr.3
 minifiers@1.1.4-winr.4
 minimongo@1.0.7-winr.3
 mobile-status-bar@1.0.3-winr.2
+momentjs:moment@2.9.0
 mongo@1.0.12-winr.4
 npm-bcrypt@0.7.8-winr.3
 observe-sequence@1.0.5-winr.2

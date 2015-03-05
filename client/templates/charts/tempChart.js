@@ -19,13 +19,14 @@ Template.tempChart.events({
 //Chart
 Template.tempChart.rendered = function () {
 
-  var chart = nv.models.lineChart()
-    .margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
+  var chart = nv.models.stackedAreaChart()
+    //.margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
     .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
-//    .transition().duration(350)  //how fast do you want the lines to transition?
+    .interpolate("basis-open")  //how fast do you want the lines to transition?
     .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
     .showYAxis(true)        //Show the y-axis
     .showXAxis(true)        //Show the x-axis
+    .clipEdge(true)
   ;
 
   nv.addGraph(function() {

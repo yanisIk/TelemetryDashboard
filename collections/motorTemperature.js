@@ -30,6 +30,9 @@ if(Meteor.isClient){
       Session.set("actualMotorTemp",temp);
       var localMotorTemps = Session.get("motorTemps");
       localMotorTemps.push({x:temp.timestamp, y:temp.value});
+      if(localMotorTemps.length > 50){
+        localMotorTemps.shift();
+      }
       Session.set("motorTemps", localMotorTemps);
     }
   });

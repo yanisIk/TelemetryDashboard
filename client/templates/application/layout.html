@@ -1,10 +1,9 @@
 <template name="layout">
 
-    <div class="container">
-      {{> header}}
-      <div id="main">
-        {{> yield}}
-      </div>
+      {{> navbar}}      
+
+    <div id="content" class="span10">
+      {{> yield}}
     </div>
 
 </template>

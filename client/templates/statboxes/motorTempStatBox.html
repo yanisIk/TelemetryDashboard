@@ -1,0 +1,10 @@
+<template name="motorTempStatBox">
+  <div class="span3 statbox purple" onTablet="span6" onDesktop="span3">
+  					<div class="boxchart">{{#each motorTemps}} {{y}},  {{/each}}</div>
+  					<div class="number">{{actualMotorTemp}}</div>
+  					<div class="title">Actual Motor Temperature</div>
+  					<div class="footer">
+  						<a href="{{pathFor 'motorTemperatures'}}"> read full report</a>
+  					</div>
+  </div>
+</template>

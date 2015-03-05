@@ -1,15 +1,22 @@
 <template name="tempChart">
+  <!-- TEST -->
+
+  <ul class="nav nav-pills">
+    <input type="text" name="temperature" />
+    <div class="btn-group" role="group">
+      <button id="pushTemp" type="button" class="btn btn-default">Push temp</button>
+      <button id="pushRandomTemp" type="button" class="btn btn-default">Push random temp</button>
+    </div>
+  </ul>
+  <br>
+
+
+  <!-- TEST -->
+
   <div id="tempChart">
-    <svg style="height:400px;width:700px"/>
+    <svg style="height:360px;width:600px"/>
   </div>
   <il>Actual temperature : {{actualTemp.value}}</il>
 
-  <!-- TEST -->
-  <br>
-  <input type="text" name="temperature" />
-  <div class="btn-group" role="group">
-    <button id="pushTemp" type="button" class="btn btn-default">Push temp</button>
-    <button id="pushRandomTemp" type="button" class="btn btn-default">Push random temp</button>
-  </div>
-  <!-- TEST -->
+
 </template>
