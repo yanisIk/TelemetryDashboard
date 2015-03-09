@@ -53,32 +53,4 @@ Template.tempChart.rendered = function () {
 
 
 
-
-
-
-
-
-  //HIGHCHART
-
-  // Create the chart
-  $('#container').highcharts('StockChart', {
-
-      rangeSelector : {
-          selected : 1
-      },
-
-      title : {
-          text : 'Motor Temperature'
-      },
-
-      series : [{
-          name : 'TEMP',
-          data : Session.get('motorTemps'),
-          tooltip: {
-              valueDecimals: 2
-          }
-      }]
-  });
-
-
 };
