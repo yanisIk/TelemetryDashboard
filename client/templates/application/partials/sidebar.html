@@ -14,7 +14,7 @@
 
             <div class="user-block clearfix">
                 <img src="img/user.jpg" alt="User Avatar">
-                {{> loginButtons}}
+                {{> atNavButton}}
                 {{#if currentUser}}
                     <div class="detail">
                         <strong>{{currentUser}}</strong><span class="badge badge-danger m-left-xs bounceIn animation-delay4"><!-- Number of unread messages ex : 4--></span>
@@ -29,7 +29,7 @@
             <div class="main-menu">
                 <ul>
                     <li class="active">
-                        <a href="#">
+                        <a href="{{pathFor 'dashboard'}}">
 								<span class="menu-icon">
 									<i class="fa fa-desktop fa-lg"></i>
 								</span>

@@ -1,6 +1,5 @@
 accounts-base@1.1.4-winr.3
 accounts-password@1.0.7-winr.6
-anti:i18n@0.4.3
 autoupdate@1.1.6-winr.4
 base64@1.0.3-winr.2
 binary-heap@1.0.3-winr.2
@@ -9,6 +8,7 @@ blaze-tools@1.0.3-winr.2
 boilerplate-generator@1.0.3-winr.3
 callback-hook@1.0.3-winr.2
 check@1.0.5-win.0
+coffeescript@1.0.6-winr.2
 d3js:d3@3.5.5
 ddp@1.0.15-winr.6
 deps@1.0.7-winr.2
@@ -16,11 +16,9 @@ ejson@1.0.6-winr.2
 email@1.0.6-winr.4
 fastclick@1.0.3-winr.2
 geojson-utils@1.0.3-winr.2
-handlebars@1.0.3-winr.2
 html-tools@1.0.4-winr.3
 htmljs@1.0.4-winr.2
 http@1.0.11-winr.5
-ian:accounts-ui-bootstrap-3@1.2.34
 id-map@1.0.3-winr.2
 iron:controller@1.0.7
 iron:core@1.0.7
@@ -58,14 +56,16 @@ sacha:spin@2.0.4
 service-configuration@1.0.4-winr.2
 session@1.0.6-winr.3
 sha@1.0.3-winr.2
+softwarerero:accounts-t9n@1.0.6
 spacebars@1.0.6-winr.5
 spacebars-compiler@1.0.5-winr.4
 srp@1.0.3-winr.2
-stylus@1.0.7-winr.3
 templating@1.0.12-winr.7
 tracker@1.0.6-winr.4
 ui@1.0.6-winr.2
 underscore@1.0.3-winr.2
 url@1.0.4-winr.2
+useraccounts:bootstrap@1.8.1
+useraccounts:core@1.8.1
 webapp@1.1.7-winr.6
 webapp-hashing@1.0.3-winr.2
