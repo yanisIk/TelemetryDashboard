@@ -1,0 +1,88 @@
+<template name="sidebar">
+        <div class="sidebar-inner scrollable-sidebar">
+
+            <div class="size-toggle">
+                <a class="btn btn-sm" id="sizeToggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+
+            <div class="user-block clearfix">
+                <img src="img/user.jpg" alt="User Avatar">
+                {{> loginButtons}}
+                {{#if currentUser}}
+                    <div class="detail">
+                        <strong>{{currentUser}}</strong><span class="badge badge-danger m-left-xs bounceIn animation-delay4"><!-- Number of unread messages ex : 4--></span>
+                        <ul class="list-inline">
+                            <li><a href="#">Profile</a></li>
+                        </ul>
+                     </div>
+                {{/if}}
+            </div>
+
+
+            <div class="main-menu">
+                <ul>
+                    <li class="active">
+                        <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i>
+								</span>
+                            <span class="text">Dashboard</span>
+                            <span class="menu-hover"></span>
+                        </a>
+                    </li>
+                    <li class="openable">
+                        <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-bar-chart-o fa-lg"></i>
+								</span>
+                            <span class="text">Statistical Data</span>
+                            <span class="badge badge-success bounceIn animation-delay5"><!-- Number of notifications--></span>
+                            <span class="menu-hover"></span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="submenu-label">Motor temperature</span></a></li>
+                            <li><a href="#"><span class="submenu-label">Speed</span></a></li>
+                            <li><a href="#"><span class="submenu-label">Tires pressure</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="openable">
+                        <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-picture-o fa-lg"></i>
+								</span>
+                            <span class="text">Map</span>
+                            <span class="menu-hover"></span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="#"><span class="submenu-label">Save Map</span></a></li>
+                            <li><a href="#"><span class="submenu-label">Locate rocket</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">
+								<span class="menu-icon">
+									<i class="fa fa-cog fa-lg"></i>
+								</span>
+                            <span class="text">Settings</span>
+                            <span class="menu-hover"> </span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="alert alert-info">
+                    ALPHA 0.1
+                </div>
+
+            </div>
+
+
+
+        </div>
+</template>

@@ -22,7 +22,7 @@ Template.tempChart.rendered = function () {
   var chart = nv.models.stackedAreaChart()
     //.margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
     .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
-    .interpolate("basis-open")  //how fast do you want the lines to transition?
+    .interpolate("linear")  //how fast do you want the lines to transition?
     .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
     .showYAxis(true)        //Show the y-axis
     .showXAxis(true)        //Show the x-axis
@@ -33,9 +33,6 @@ Template.tempChart.rendered = function () {
     chart.xAxis.axisLabel('Time (ms)').tickFormat(d3.format('d'));
     chart.yAxis.axisLabel('Temperature (F)').tickFormat(d3.format('d'));
 
-    d3.select('#tempChart svg').datum(
-      [{ values: Session.get('motorTemps'), key: 'Motor temperature' }]
-    ).transition().duration(300).call(chart);
 
     nv.utils.windowResize(function() { chart.update(); });
 
@@ -46,7 +43,7 @@ Template.tempChart.rendered = function () {
   this.autorun(function () {
     d3.select('#tempChart svg').datum(
       [{ values: Session.get('motorTemps'), key: 'Motor temperature' }]
-    ).transition().duration(300).call(chart);
+    ).transition().duration(0).call(chart);
 
     chart.update();
   });

@@ -7,11 +7,10 @@
 meteor-platform
 accounts-password
 iron:router
-twbs:bootstrap
 ian:accounts-ui-bootstrap-3
 d3js:d3
 pfafman:nvd3
 sacha:spin
 underscore
 momentjs:moment
-maazalik:highcharts
+less

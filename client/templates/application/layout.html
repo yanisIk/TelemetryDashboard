@@ -1,12 +1,54 @@
 <head>
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Telemetry Dashboard</title>
 </head>
+
 <template name="layout">
 
-      {{> navbar}}      
 
-    <div id="content" class="span10">
-      {{> yield}}
+
+
+    <!-- Overlay Div -->
+    <div id="overlay" class="transparent"></div>
+    <!-- Main Wrapper -->
+    <div id="wrapper" class="preload">
+
+        <!-- Top Navigation -->
+        <div id="top-nav" class="fixed skin-6">
+            {{> navbar}}
+        </div>
+        <!-- End of Top Navigation -->
+
+        <!-- Sidebar Menu -->
+        <aside class="fixed skin-6">
+            {{> sidebar}}
+        </aside>
+        <!-- End of Sidebar Menu -->
+
+        <!-- Main Container -->
+        <div id="main-container">
+            {{> yield}}
+        </div>
+        <!-- End of Main Container -->
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-sm-6">
+					<span class="footer-brand">
+						<strong class="text-danger">Telemetry</strong> App
+					</span>
+                    <p class="no-margin">
+                        &copy; 2015 <strong>Telemetry Dashboard</strong>. ALL Rights Reserved.
+                    </p>
+                </div><!-- /.col -->
+            </div><!-- /.row-->
+        </footer>
+        <!-- End of Footer -->
     </div>
+    <!-- End of Main Wrapper -->
+
+    <a href="" id="scroll-to-top" class="hidden-print"><i class="fa fa-chevron-up"></i></a>
 
 </template>
+
+
