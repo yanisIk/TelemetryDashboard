@@ -1,0 +1,67 @@
+<template name="dashboard">
+
+
+    <div class="main-header clearfix">
+        <div class="page-title">
+            <h3 class="no-margin">Dashboard</h3>
+        </div><!-- /page-title -->
+    </div><!-- /main-header -->
+
+    <div class="grey-container shortcut-wrapper">
+        <a href="#" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-clock-o"></i>
+					</span>
+            <span class="text">Time since the last data received</span><h3 class="bg-danger">00 : 00</h3>
+        </a>
+
+        <a href="#" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-clock-o"></i>
+					</span>
+            <span class="text">Duration of the connection loss</span><h3 class="bg-danger">00 : 00</h3>
+        </a>
+        <a href="#" class="shortcut-link">
+					<span class="shortcut-icon">
+						<i class="fa fa-clock-o"></i>
+					</span>
+            <span class="text">Time since boot time</span><h3 class="bg-danger">00 : 00</h3>
+        </a>
+    </div><!-- /grey-container -->
+
+    <div class="padding-md">
+
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                {{> tempChart}}
+            </div>
+            <div class="col-sm-6 col-md-3">
+                {{> tempGauge}}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--
+    <div class="panel panel-primary" onTablet="span6" onDesktop="span3">
+    <div class="panel-heading">Motor Temperature Chart</div>
+    <div class="panel-body">
+
+      {{> tempChart}}
+      {{> tempGauge}}
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">Motor Temperature Table</div>
+    <div class="panel-body">
+      {{> tempTable}}
+    </div>
+  </div>
+  -->
+
+</template>

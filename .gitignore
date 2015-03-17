@@ -1,2 +1,7 @@
 local
 .idea*
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+dump
+settings.json
