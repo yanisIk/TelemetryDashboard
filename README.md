@@ -1,1 +1,3 @@
 # TelemetryDashboard
+Application for connecting "IOT" sensors and displaying data in realtime.
+Built with Meteor, MongoDB and many other libraries...
