@@ -1,12 +1,12 @@
-Meteor.publishComposite("items", function() {
+Meteor.publishComposite("measures", function() {
   return {
     find: function() {
-      return Items.find({});
+      return Measures.find({});
     }
     // ,
     // children: [
     //   {
-    //     find: function(item) {
+    //     find: function(measure) {
     //       return [];
     //     }
     //   }

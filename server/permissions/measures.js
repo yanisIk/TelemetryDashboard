@@ -1,4 +1,4 @@
-Items.allow({
+Measures.allow({
   'insert': function(userId, doc) {
     return userId;
   },
