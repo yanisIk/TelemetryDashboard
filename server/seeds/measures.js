@@ -1,16 +1,16 @@
 Meteor.startup(function() {
 
-  Factory.define('item', Measures, {
-    name: function() { return Fake.sentence(); },
-    rating: function() { return _.random(1, 5); }
+  Factory.define('motorTemp', Measures, {
+    type: function() { return "motorTemperature"; },
+    value: function() { return _.random(10, 100); }
   });
 
   if (Measures.find({}).count() === 0) {
 
     _(10).times(function(n) {
-      Factory.create('item');
+      Factory.create('motorTemp');
     });
-
   }
 
+  Meteor.setInterval(function(){Factory.create("motorTemp");}, 2000);
 });

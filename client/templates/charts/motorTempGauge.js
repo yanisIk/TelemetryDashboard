@@ -2,26 +2,21 @@
  * Call the function to built the chart when the template is rendered
  */
 Template.motorTempGauge.rendered = function () {
-    builtGauge();
+    buildGauge();
 
     /*
      * Change value when new temperature is added
      */
-    this.autorun(function () {
-        var chart = $('#container-gauge').highcharts(),
-            point,
-            newVal
+    this.autorun(function () {            
+        Measures.find({type: "motorTemperature"}).observe({
+            added : function(temperature){ 
+                var point = motorTemperatureGauge.series[0].points[0];
 
-        if (chart) {
-            point = chart.series[0].points[0];
-
-            Measures.motorTemperatures().observe({
-                added : function(motorTemperature){ newVal = motorTemperature.value}
-            });
-
-            point.update(newVal);
-        }
-
+                var value =  temperature.value;
+                // update the point
+                point.update(value);
+            }
+        });       
     });
 
 }
@@ -31,82 +26,101 @@ Template.motorTempGauge.rendered = function () {
 /*
  * Function to draw the gauge
  */
-function builtGauge() {
+function buildGauge() {
 
-    $('#container-gauge').highcharts({
+    motorTemperatureGauge = new Highcharts.Chart({
         chart: {
-            type: 'solidgauge'
+            type: 'gauge',
+            renderTo: 'motorTempGauge',
+            plotBackgroundColor: null,
+            plotBackgroundImage: null,
+            plotBorderWidth: 0,
+            plotShadow: false
         },
 
-        title: null,
+        title: {
+            text: 'Motor Temperature'
+        },
 
         pane: {
-            center: ['50%', '85%'],
-            size: '140%',
-            startAngle: -90,
-            endAngle: 90,
-            background: {
-                backgroundColor: '#EEE',
-                innerRadius: '60%',
-                outerRadius: '100%',
-                shape: 'arc'
-            }
+            startAngle: -120,
+            endAngle: 120,
+            background: [{
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                    stops: [
+                        [0, '#FFF'],
+                        [1, '#333']
+                    ]
+                },
+                borderWidth: 0,
+                outerRadius: '109%'
+            }, {
+                backgroundColor: {
+                    linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                    stops: [
+                        [0, '#333'],
+                        [1, '#FFF']
+                    ]
+                },
+                borderWidth: 1,
+                outerRadius: '107%'
+            }, {
+                // default background
+            }, {
+                backgroundColor: '#DDD',
+                borderWidth: 0,
+                outerRadius: '105%',
+                innerRadius: '103%'
+            }]
         },
 
-        tooltip: {
-            enabled: false
-        },
-
+        // the value axis
         yAxis: {
             min: 0,
-            max: 200,
-            title: {
-                text: 'Speed'
-            },
+            max: 100,
 
-            stops: [
-                [0.1, '#55BF3B'],
-                [0.5, '#DDDF0D'],
-                [0.9, '#DF5353']
-            ],
-            lineWidth: 0,
-            minorTickInterval: null,
-            tickPixelInterval: 400,
-            tickWidth: 0,
-            title: {
-                y: -70
-            },
+            minorTickInterval: 'auto',
+            minorTickWidth: 1,
+            minorTickLength: 10,
+            minorTickPosition: 'inside',
+            minorTickColor: '#666',
+
+            tickPixelInterval: 30,
+            tickWidth: 2,
+            tickPosition: 'inside',
+            tickLength: 10,
+            tickColor: '#666',
             labels: {
-                y: 16
-            }
-        },
-
-        plotOptions: {
-            solidgauge: {
-                dataLabels: {
-                    y: 5,
-                    borderWidth: 0,
-                    useHTML: true
-                }
-            }
-        },
-
-        credits: {
-            enabled: false
+                step: 2,
+                rotation: 'auto'
+            },
+            title: {
+                text: 'C'
+            },
+            plotBands: [{
+                from: 0,
+                to: 50,
+                color: '#55BF3B' // green
+            }, {
+                from: 50,
+                to: 75,
+                color: '#DDDF0D' // yellow
+            }, {
+                from: 75,
+                to: 100,
+                color: '#DF5353' // red
+            }]
         },
 
         series: [{
-            name: 'MotorTemperature',
-            data: [80],
-            dataLabels: {
-                format: '<div style="text-align:center"><span style="font-size:25px;color:#7e7e7e">{y}</span><br/>' +
-                '<span style="font-size:12px;color:silver">F</span></div>'
-            },
+            name: 'Temperature',
+            data: [],
             tooltip: {
-                valueSuffix: ' F'
+                valueSuffix: ' C'
             }
         }]
-    });
+    }); 
 }
 
 
