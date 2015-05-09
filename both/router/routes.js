@@ -1,12 +1,15 @@
+/*
 Router.route('/', {
   name: 'home',
   layoutTemplate: 'publicLayout'
-});
+})*/
 
-Router.route('/dashboard', {
+Router.route('/', {
   name: 'dashboard'
 });
 
+/*
 Router.plugin('ensureSignedIn', {
   only: ['dashboard']
 });
+*/

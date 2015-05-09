@@ -1,14 +1,15 @@
 /*
- * Call the function to built the chart when the template is rendered
+ * Call the function to build the chart when the template is rendered
  */
 Template.motorTempChart.rendered = function () {
-    buildGraph();
+    buildChart();
 
     /*
      * add point when new temperature is added
      */
     this.autorun(function () {            
-        Measures.find({type: "motorTemperature"}).observe({
+        if(typeof(motorTemperatureChart) !== "undefined"){
+            Measures.find({type: "motorTemperature"}).observe({
             added : function(temperature){ 
                 var series = motorTemperatureChart.series[0],
                 shift = series.data.length > 20; // shift if the series is 
@@ -18,7 +19,8 @@ Template.motorTempChart.rendered = function () {
                 // add the point
                 motorTemperatureChart.series[0].addPoint(point, true, shift);
             }
-        });       
+        });
+        }      
     });
 
 }
@@ -28,7 +30,7 @@ Template.motorTempChart.rendered = function () {
 /*
  * Function to draw the graph
  */
-function buildGraph() {
+function buildChart() {
 
     motorTemperatureChart = new Highcharts.Chart({
         chart: {

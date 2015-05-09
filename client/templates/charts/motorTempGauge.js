@@ -1,5 +1,5 @@
 /*
- * Call the function to built the chart when the template is rendered
+ * Call the function to build the gauge when the template is rendered
  */
 Template.motorTempGauge.rendered = function () {
     buildGauge();
@@ -8,15 +8,17 @@ Template.motorTempGauge.rendered = function () {
      * Change value when new temperature is added
      */
     this.autorun(function () {            
-        Measures.find({type: "motorTemperature"}).observe({
-            added : function(temperature){ 
-                var point = motorTemperatureGauge.series[0].points[0];
+        if(typeof(motorTemperatureGauge) !== "undefined"){
+            Measures.find({type: "motorTemperature"}).observe({
+                added : function(temperature){ 
+                    var point = motorTemperatureGauge.series[0].points[0];
 
-                var value =  temperature.value;
-                // update the point
-                point.update(value);
-            }
-        });       
+                    var value =  temperature.value;
+                    // update the point
+                    point.update(value);
+                }
+            });
+        }       
     });
 
 }
